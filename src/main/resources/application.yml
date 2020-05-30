@@ -1,0 +1,33 @@
+server:
+  port:  9090
+
+spring:
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          twitch:
+#            clientId: "q14d7nph72xv6h8o5lftg9q24gqu1o"
+#            clientSecret: "sdfbmxfem56bfeuc623geonj89s9hu"
+#            scope: "user:read:email+channel:read:subscriptions"
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+  datasource:
+    url: jdbc:h2:mem:lok
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  mvc:
+    log-request-details: true
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
