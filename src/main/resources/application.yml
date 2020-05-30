@@ -2,14 +2,14 @@ server:
   port:  9090
 
 spring:
-#  security:
-#    oauth2:
-#      client:
-#        registration:
-#          twitch:
-#            clientId: "q14d7nph72xv6h8o5lftg9q24gqu1o"
-#            clientSecret: "sdfbmxfem56bfeuc623geonj89s9hu"
-#            scope: "user:read:email+channel:read:subscriptions"
+  security:
+    oauth2:
+      client:
+        registration:
+          twitch:
+            clientId: "q14d7nph72xv6h8o5lftg9q24gqu1o"
+            clientSecret: "sdfbmxfem56bfeuc623geonj89s9hu"
+            scope: "user:read:email+channel:read:subscriptions"
   jpa:
     show-sql: true
     hibernate:

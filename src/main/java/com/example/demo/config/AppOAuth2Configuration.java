@@ -1,6 +1,7 @@
 package com.example.demo.config;
 
 import com.example.demo.social.AppOAuth2Provider;
+import com.example.demo.social.AppOAuth2UserRequestEntityConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,8 +10,12 @@ import org.springframework.security.oauth2.client.InMemoryOAuth2AuthorizedClient
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
+import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.client.web.AuthenticatedPrincipalOAuth2AuthorizedClientRepository;
 import org.springframework.security.oauth2.client.web.OAuth2AuthorizedClientRepository;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 @Configuration
 //@EnableWebSecurity
@@ -40,6 +45,9 @@ public class AppOAuth2Configuration extends WebSecurityConfigurerAdapter {
                                         .baseUri("/oauth2/code/*")
 
                                 )
+//                                .userInfoEndpoint(
+//                                        userInfo -> userInfo.userService(this.oauth2UserService())
+//                                )
                 ).oauth2Client();
     }
 
@@ -60,4 +68,10 @@ public class AppOAuth2Configuration extends WebSecurityConfigurerAdapter {
         return new AuthenticatedPrincipalOAuth2AuthorizedClientRepository(authorizedClientService);
     }
 
+//    @Bean
+//    public OAuth2UserService<OAuth2UserRequest, OAuth2User> oauth2UserService() {
+//        DefaultOAuth2UserService defaultOAuth2UserService = new DefaultOAuth2UserService();
+//        defaultOAuth2UserService.setRequestEntityConverter(new AppOAuth2UserRequestEntityConverter());
+//        return defaultOAuth2UserService;
+//    }
 }

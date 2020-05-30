@@ -19,11 +19,12 @@ public enum AppOAuth2Provider {
             builder.authorizationUri("https://id.twitch.tv/oauth2/authorize");
             builder.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE);
             builder.tokenUri("https://id.twitch.tv/oauth2/token");
-//            builder.clientAuthenticationMethod(ClientAuthenticationMethod.POST);
-            builder.userInfoUri("https://api.twitch.tv/helix/users");
+            builder.clientAuthenticationMethod(ClientAuthenticationMethod.POST);
+//            builder.userInfoUri("https://api.twitch.tv/helix/users");
+            builder.userInfoUri("https://id.twitch.tv/oauth2/userinfo");
             builder.userInfoAuthenticationMethod(AuthenticationMethod.HEADER);
             builder.redirectUriTemplate("{baseUrl}/oauth2/code/{registrationId}");
-            builder.userNameAttributeName("login");
+            builder.userNameAttributeName("sub");
             return builder.build();
         }
     };
