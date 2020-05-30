@@ -40,7 +40,7 @@ public class AppOAuth2Configuration extends WebSecurityConfigurerAdapter {
                                         .baseUri("/oauth2/code/*")
 
                                 )
-                );
+                ).oauth2Client();
     }
 
     @Bean
